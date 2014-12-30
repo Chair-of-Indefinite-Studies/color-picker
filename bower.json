@@ -1,0 +1,25 @@
+{
+  "name": "color-picker",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Chair-of-Indefinite-Studies/color-picker",
+  "authors": [
+    "Robin van Kaathoven <robin.vankaathoven@luminis.eu>"
+  ],
+  "description": "Color picker",
+  "main": "index.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "Color",
+    "picker"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
