@@ -1,8 +1,9 @@
 <html>
 <head>
     <!-- include source files here... -->
-    <script src="js/color.picker.js"></script>
     <script src="bower_components/cois-observable/cois-observable.min.js"></script>
+
+    <script src="js/color.picker.js"></script>
 </head>
 <body>
 	
@@ -22,9 +23,11 @@
 	
 	picker.addWatch(document.getElementById('blue'), 'blue');
 	
-	window.setInterval(function() {
-		document.getElementById('color').style.backgroundColor = picker.getHEXString();//	picker.
-	}, 1000);
+	picker.on('colorPicked', function(color){
+		console.log(color);
+		document.getElementById('color').style.backgroundColor = color;
+		console.log(document.getElementById('color').style);
+	});
 
 </script>
 </body>

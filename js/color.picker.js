@@ -13,8 +13,8 @@
 
 	Model.prototype = Object.create(ns.Observable.prototype);
 	Model.prototype.constructor = Model;
-	Model.prototype.getRGBString = function() {
-		return ['rgba(', [this.red, this.green, this.blue, this.alpha].join(','), ');'].join('');
+	Model.prototype.getRGBAString = function(red, green, blue, alpha) {
+		return ['rgba(', [red||this.red, green||this.green, blue||this.blue, alpha||this.alpha].join(','), ')'].join('');
 	}
 
 	Model.prototype.addWatch = function(HTMLElement, attribute) {
@@ -24,18 +24,23 @@
 
 		HTMLElement.addEventListener('drag', function(e){
 			_self[attribute] = parseInt(this.value);
-			this.colorPicked(this);
+			_self.colorPicked(this);
 		});
 
 		HTMLElement.addEventListener('change', function(e){
 			_self[attribute] = parseInt(this.value);
-			this.colorPicked(this);
+			_self.colorPicked(this);
+		});
+
+		HTMLElement.addEventListener('input', function(e){
+			_self[attribute] = parseInt(this.value);
+			_self.colorPicked(this);
 		});
 	}
 
 	Model.prototype.colorPicked = function() {
 		var _self = this;
-		this.signal('colorPicked', this.getRGBString());
+		this.signal('colorPicked', _self.getRGBAString());
 	}
 
 

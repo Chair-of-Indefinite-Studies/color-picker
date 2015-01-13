@@ -49,7 +49,7 @@ describe('color', function() {
 		
 		it('should have a string representation of a color', function() {
 			var model = new color.picker.Model(128,12,212);
-			expect(model.getRGBString()).toEqual('rgba(128,12,212,255);');
+			expect(model.getRGBAString()).toEqual('rgba(128,12,212,255)');
 		})
 	});
 
@@ -81,18 +81,17 @@ describe('color', function() {
 
 	describe('listeners', function(){
 		it('should notify observers', function(){
-		var notified = false;
-		var pickedColor;
-		var model = new color.picker.Model(121,0,0);
-		model.on('colorPicked', function(color){
-			notified = true;
-			actualColor = color;
-		});
-		model.colorPicked(model);
+			var notified = false;
+			var pickedColor;
+			var model = new color.picker.Model(121,0,0);
+			model.on('colorPicked', function(color){
+				notified = true;
+				actualColor = color;
+			});
+			model.colorPicked(model);
 
-		expect(notified).toBeTruthy();
-		expect(actualColor).toBe('rgba(121,0,0,255);');
-
+			expect(notified).toBeTruthy();
+			expect(actualColor).toBe('rgba(121,0,0,255)');
 		});
 		
 	});
