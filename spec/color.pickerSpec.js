@@ -42,14 +42,14 @@ describe('color', function() {
 			});
 
 			it('should cap values higher than given bits...', function() {
-				var model = new color.picker.Model(256,12,666, 2);
+				var model = new color.picker.Model(256,12,666, 255, 2);
 				expect([model.red, model.green, model.blue]).toEqual([3,3,3]);
 			});
 		});
 		
 		it('should have a string representation of a color', function() {
 			var model = new color.picker.Model(128,12,212);
-			expect(model.getRGBString()).toEqual('rgb(128,12,212);');
+			expect(model.getRGBString()).toEqual('rgba(128,12,212,255);');
 		})
 	});
 
@@ -91,7 +91,7 @@ describe('color', function() {
 		model.colorPicked(model);
 
 		expect(notified).toBeTruthy();
-		expect(actualColor).toBe('rgb(121,0,0);');
+		expect(actualColor).toBe('rgba(121,0,0,255);');
 
 		});
 		

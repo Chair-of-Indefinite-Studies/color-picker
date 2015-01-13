@@ -1,19 +1,20 @@
 ;(function(ns, color, undefined){
 	var picker = color.picker = {};
-	var Model = picker.Model = function(red, green, blue, bits) {
+	var Model = picker.Model = function(red, green, blue, alpha, bits) {
 		ns.Observable.call(this);
 		
 		var maxColor = Math.pow(2, bits || 8);
 		this.red = (red<maxColor)?red:maxColor-1;
 		this.green = (green<maxColor)?green:maxColor-1;
 		this.blue = (blue<maxColor)?blue:maxColor-1;
+		this.alpha = (alpha<maxColor)?alpha:maxColor-1;
 	};
 
 
 	Model.prototype = Object.create(ns.Observable.prototype);
 	Model.prototype.constructor = Model;
 	Model.prototype.getRGBString = function() {
-		return ['rgb(', [this.red, this.green, this.blue].join(','), ');'].join('');
+		return ['rgba(', [this.red, this.green, this.blue, this.alpha].join(','), ');'].join('');
 	}
 
 	Model.prototype.addWatch = function(HTMLElement, attribute) {
