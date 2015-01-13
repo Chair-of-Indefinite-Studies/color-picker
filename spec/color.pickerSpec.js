@@ -78,6 +78,26 @@ describe('color', function() {
 			expect(model.red).toEqual(222);
 		});
 	});
+
+	describe('listeners', function(){
+		it('should notify observers', function(){
+		var notified = false;
+		var pickedColor;
+		var model = new color.picker.Model(121,0,0);
+		model.on('colorPicked', function(color){
+			notified = true;
+			actualColor = color;
+		});
+		model.colorPicked(model);
+
+		expect(notified).toBeTruthy();
+		expect(actualColor).toBe('rgb(121,0,0);');
+
+		});
+		
+	});
+
+
 		
 
 
