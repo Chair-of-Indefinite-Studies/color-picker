@@ -1,5 +1,5 @@
 {
-  "name": "color-picker",
+  "name": "cois-color-picker",
   "version": "1.0.0",
   "homepage": "https://github.com/Chair-of-Indefinite-Studies/color-picker",
   "authors": [
@@ -19,7 +19,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "specs",
+    "spec",
     "SpecRunner.html",
     "package.json",
     "index.html"
