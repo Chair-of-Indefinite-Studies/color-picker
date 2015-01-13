@@ -49,7 +49,7 @@ describe('color', function() {
 		
 		it('should have a string representation of a color', function() {
 			var model = new color.picker.Model(128,12,212);
-			expect(model.getRGBAString()).toEqual('rgba(128,12,212,255)');
+			expect(model.getRGBAString()).toEqual('rgba(128,12,212,1)');
 		})
 	});
 
@@ -91,13 +91,21 @@ describe('color', function() {
 			model.colorPicked(model);
 
 			expect(notified).toBeTruthy();
-			expect(actualColor).toBe('rgba(121,0,0,255)');
+			expect(actualColor).toBe('rgba(121,0,0,1)');
 		});
 		
 	});
 
+	describe('color ranges', function() {
+		it('should give me an object with a lower range and an upper range', function(){
+			var model = new color.picker.Model(1,2,3,0.1);
+			expect(model.getRGBAString()).toBe('rgba(1,2,3,0.1)');
 
-		
-
-
+			expect(model.getColorRangeFor('red')).toEqual({low: 'rgba(0,2,3,0.1)', high: 'rgba(255,2,3,0.1)'});
+			expect(model.getColorRangeFor('green')).toEqual({low: 'rgba(1,0,3,0.1)', high: 'rgba(1,255,3,0.1)'});
+			expect(model.getColorRangeFor('blue')).toEqual({low: 'rgba(1,2,0,0.1)', high: 'rgba(1,2,255,0.1)'});
+			expect(model.getColorRangeFor('alpha')).toEqual({low: 'rgba(1,2,3,0)', high: 'rgba(1,2,3,1)'});
+		});
+	});
+	
 });

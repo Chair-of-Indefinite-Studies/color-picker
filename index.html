@@ -10,6 +10,7 @@
 <input type="range" id="red" name="red" min="0" max="255">
 <input type="range" id="green" name="blue" min="0" max="255">
 <input type="range" id="blue" name="blue" min="0" max="255">
+<input type="range" id="alpha" name="alpha" min="0" max="1" step="0.05">
 
 <div id="color" style="width: 100px; height: 100px; display: block;"></div>
 
@@ -23,10 +24,18 @@
 	
 	picker.addWatch(document.getElementById('blue'), 'blue');
 	
+	picker.addWatch(document.getElementById('alpha'), 'alpha');
+	
 	picker.on('colorPicked', function(color){
-		console.log(color);
 		document.getElementById('color').style.backgroundColor = color;
-		console.log(document.getElementById('color').style);
+		var gradientRange = picker.getColorRangeFor('red');
+		document.getElementById('red').style.backgroundImage = '-moz-linear-gradient(left, ' + gradientRange.low + ', ' + gradientRange.high + ')';
+		gradientRange = picker.getColorRangeFor('green');
+		document.getElementById('green').style.backgroundImage = '-moz-linear-gradient(left, ' + gradientRange.low + ', ' + gradientRange.high + ')';
+		gradientRange = picker.getColorRangeFor('blue');
+		document.getElementById('blue').style.backgroundImage = '-moz-linear-gradient(left, ' + gradientRange.low + ', ' + gradientRange.high + ')';
+		gradientRange = picker.getColorRangeFor('alpha');
+		document.getElementById('alpha').style.backgroundImage = '-moz-linear-gradient(left, ' + gradientRange.low + ', ' + gradientRange.high + ')';	
 	});
 
 </script>
