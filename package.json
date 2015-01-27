@@ -1,6 +1,7 @@
 {
-  "name": "color-picker",
-  "version": "0.0.0",
+  "name": "cois-color-picker",
+  "private": true,
+  "version": "1.0.0",
   "description": "Picking colors",
   "main": "index.js",
   "scripts": {
